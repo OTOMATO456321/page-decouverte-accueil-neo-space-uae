@@ -154,9 +154,9 @@
 
   .gold-bub {
     position:absolute;width:220px;height:220px;
-    background:linear-gradient(145deg,rgba(201,169,97,.35),rgba(184,148,46,.2));
-    border:1px solid rgba(201,169,97,.4);
-    box-shadow:0 8px 32px rgba(0,0,0,.2),0 0 0 1px rgba(201,169,97,.15) inset,0 2px 0 rgba(255,255,255,.25) inset,0 -3px 8px rgba(0,0,0,.1) inset;
+    background:linear-gradient(145deg,rgba(201,169,97,.55),rgba(184,148,46,.35));
+    border:1px solid rgba(201,169,97,.6);
+    box-shadow:0 8px 32px rgba(201,169,97,.15),0 0 0 1px rgba(201,169,97,.2) inset,0 2px 0 rgba(255,255,255,.3) inset,0 -3px 8px rgba(0,0,0,.1) inset;
     backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
     display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;cursor:pointer;z-index:5;overflow:hidden;
@@ -167,7 +167,7 @@
   .gold-bub:hover::before { background:radial-gradient(ellipse 80% 50% at 35% 18%,rgba(255,255,255,.5) 0%,transparent 50%),radial-gradient(ellipse 60% 40% at 65% 82%,rgba(255,255,255,.15) 0%,transparent 50%),linear-gradient(160deg,rgba(255,255,255,.3) 0%,transparent 35%,rgba(255,255,255,.1) 60%,transparent 80%); }
   /* Edge glow */
   .gold-bub::after { content:'';position:absolute;inset:-2px;border-radius:inherit;background:conic-gradient(from 0deg,transparent 0%,rgba(201,169,97,.3) 15%,transparent 30%,rgba(201,169,97,.2) 50%,transparent 65%,rgba(201,169,97,.25) 80%,transparent 95%);z-index:-1;animation:ringSpn 12s linear infinite;opacity:.5;filter:blur(2px);transition:opacity .5s; }
-  .gold-bub:hover { background:linear-gradient(145deg,rgba(201,169,97,.5),rgba(184,148,46,.3));border-color:rgba(201,169,97,.6);box-shadow:0 20px 60px rgba(201,169,97,.2),0 0 0 1px rgba(201,169,97,.2) inset,0 2px 0 rgba(255,255,255,.35) inset,0 0 50px rgba(201,169,97,.1);margin-top:-8px; }
+  .gold-bub:hover { background:linear-gradient(145deg,rgba(201,169,97,.7),rgba(184,148,46,.5));border-color:rgba(201,169,97,.8);box-shadow:0 20px 60px rgba(201,169,97,.25),0 0 0 1px rgba(201,169,97,.3) inset,0 2px 0 rgba(255,255,255,.4) inset,0 0 60px rgba(201,169,97,.15);margin-top:-8px; }
   .gold-bub:hover::after { opacity:1; }
   .gold-bub svg { width:38px;height:38px;stroke:rgba(255,255,255,.85);stroke-width:1.5;fill:none;margin-bottom:10px;z-index:2;position:relative;transition:all .4s; }
   .gold-bub:hover svg { stroke:#fff;transform:scale(1.25);filter:drop-shadow(0 2px 8px rgba(255,255,255,.3)); }
@@ -244,6 +244,54 @@
   .fs-switching .fs-right{opacity:0!important;transition:opacity .2s!important}
   .fs-enter .fs-left{opacity:1!important;transition:opacity .4s!important}
   .fs-enter .fs-right{opacity:1!important;transition:opacity .4s .1s!important}
+
+  /* ══════════════════════════════════════
+     SECTION 4 — PRENDRE UN RENDEZ-VOUS
+     ══════════════════════════════════════ */
+  .s-rdv { position:relative;min-height:80vh;background:#0A0A0A;display:flex;align-items:center;justify-content:center;z-index:5;overflow:hidden; }
+  .s-rdv .rdv-glow { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,97,.08),transparent 70%);filter:blur(60px);pointer-events:none;animation:rdvGlow 6s ease-in-out infinite; }
+  @keyframes rdvGlow { 0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.6}50%{transform:translate(-50%,-50%) scale(1.2);opacity:1} }
+
+  .rdv-content { position:relative;z-index:10;text-align:center;max-width:700px;padding:60px 30px; }
+  .rdv-content .rdv-label { font-size:12px;text-transform:uppercase;letter-spacing:.4em;color:#C9A961;margin-bottom:24px;font-weight:500; }
+  .rdv-content h2 { font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,72px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:20px; }
+  .rdv-content h2 em { font-style:normal;color:#C9A961; }
+  .rdv-content p { font-size:16px;color:rgba(255,255,255,.4);line-height:1.8;max-width:500px;margin:0 auto 50px;font-weight:300; }
+
+  /* Big CTA button */
+  .rdv-cta {
+    display:inline-flex;align-items:center;gap:14px;
+    padding:22px 50px;border-radius:40px;
+    background:#fff;color:#1A1A1A;
+    font-size:18px;font-weight:700;letter-spacing:.03em;
+    border:none;cursor:pointer;
+    position:relative;overflow:hidden;
+    transition:all .4s cubic-bezier(.23,1,.32,1);
+    box-shadow:0 0 30px rgba(201,169,97,.2),0 0 60px rgba(201,169,97,.1);
+  }
+  .rdv-cta::before {
+    content:'';position:absolute;inset:-3px;border-radius:43px;
+    background:conic-gradient(from 0deg,transparent 0%,rgba(201,169,97,.5) 25%,transparent 50%,rgba(201,169,97,.3) 75%,transparent 100%);
+    z-index:-1;animation:rdvRingSpin 6s linear infinite;
+    filter:blur(4px);
+  }
+  @keyframes rdvRingSpin { to{transform:rotate(360deg)} }
+  .rdv-cta::after {
+    content:'';position:absolute;inset:0;border-radius:40px;
+    background:linear-gradient(135deg,rgba(255,255,255,0) 40%,rgba(201,169,97,.15) 50%,rgba(255,255,255,0) 60%);
+    background-size:200% 100%;
+    animation:rdvShine 3s ease-in-out infinite;
+  }
+  @keyframes rdvShine { 0%{background-position:200% 0}100%{background-position:-200% 0} }
+  .rdv-cta:hover {
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 0 40px rgba(201,169,97,.35),0 0 80px rgba(201,169,97,.15),0 20px 60px rgba(0,0,0,.3);
+  }
+  .rdv-cta svg { width:22px;height:22px;stroke:#C9A961;stroke-width:2;fill:none;position:relative;z-index:2; }
+  .rdv-cta span { position:relative;z-index:2; }
+
+  /* Separator line */
+  .rdv-line { width:1px;height:80px;background:linear-gradient(180deg,transparent,rgba(201,169,97,.3),transparent);margin:0 auto 0;position:absolute;top:-40px;left:50%; }
 </style>
 </head>
 <body>
@@ -301,6 +349,21 @@
       <div class="gold-bub" style="--i:4" onclick="openPanel('qualite')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><div class="lbl">Qualité de Vie</div></div>
       <div class="gold-bub" style="--i:5" onclick="openPanel('dubai247')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div class="lbl">Dubaï 24h/24</div></div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 4 — RENDEZ-VOUS ═══════════ -->
+<section class="s-rdv" id="sec4">
+  <div class="rdv-line"></div>
+  <div class="rdv-glow"></div>
+  <div class="rdv-content">
+    <div class="rdv-label">Passez à l'action</div>
+    <h2>Prendre un<br><em>Rendez-vous</em></h2>
+    <p>Discutez avec Pierre de vos objectifs d'investissement à Dubaï. Consultation personnalisée, sans engagement.</p>
+    <button class="rdv-cta" onclick="window.open('https://calendar.google.com','_blank')">
+      <span>Réserver un créneau</span>
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+    </button>
   </div>
 </section>
 
